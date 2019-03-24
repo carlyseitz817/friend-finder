@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Righteous|Roboto:700" rel="stylesheet">
+    <style>
+        body {
+            background-image: radial-gradient(white 20%, #ff5a64, #faa04b, #d2dc69, #0ef49b);
+            text-align: center;
+            width: 75%;
+            margin: auto;
+        }
+
+        .input-active {
+            color: white;
+        }
+
+        label {
+            font-family: 'Roboto', sans-serif;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Righteous', cursive;
+        }
+
+        h1 {
+            font-size: 500%;
+        }
+
+        h2 {
+            font-size: 250%;
+            padding-top: 1.5em;
+            margin-top: 0;
+        }
+
+        h3 {
+            font-size: 200%;
+            padding: 1em;
+        }
+
+        #questions {
+            background-color: white;
+            border-radius: 3em;
+            overflow: auto;
+            border: 1em double black;
+            margin-bottom: 2em;
+        }
+
+        .question-wrapper {
+            padding-bottom: 5em;
+        }
+
+        .container {
+            margin-top: 40vh;
+        }
+
+        .even {
+            background-color: white;
+        }
+
+        .odd {
+            background-color: black;
+            color: white;
+        }
+
+        .radio-label {
+            width: 100%;
+            margin-bottom: 1em;
+            text-align: center;
+        }
+
+        .radio-pillbox {
+            margin: auto;
+            height: 4em;
+            width: 75%;
+            font-size: 1em;
+            border: 0;
+            border-radius: 75px;
+            overflow: hidden;
+            background: -webkit-linear-gradient(100deg,
+                #0ef49b 0%,
+                #d2dc69 30%,
+                #faa04b 70%,
+                #ff5a64 100%);
+            background: -moz-linear-gradient(100deg,
+                #0ef49b 0%,
+                #d2dc69 30%,
+                #faa04b 70%,
+                #ff5a64 100%);
+            background: -o-linear-gradient(100deg,
+                #0ef49b 0%,
+                #d2dc69 30%,
+                #faa04b 70%,
+                #ff5a64 100%);
+            background: -ms-linear-gradient(100deg,
+                #0ef49b 0%,
+                #d2dc69 30%,
+                #faa04b 70%,
+                #ff5a64 100%);
+            background: linear-gradient(100deg,
+                #ff5a64 0%,
+                #faa04b 30%,
+                #d2dc69 70%,
+                #0ef49b 100%);
+            color: #000000;
+            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.16);
+        }
+
+        .radio-pillbox radiogroup {
+            height: 100%;
+            width: 100%;
+            display: flex;
+        }
+
+        .radio-pillbox radiogroup div {
+            width: 100%;
+            position: relative;
+        }
+
+        .radio-pillbox radiogroup div input {
+            -webkit-appearance: inherit;
+            width: 100%;
+            height: 100%;
+            transition: background 300ms ease-out;
+            margin: 0;
+            outline: 0;
+            border-left: 1px solid rgba(0, 0, 0, 0.08);
+        }
+
+        /* .radio-pillbox radiogroup div input:checked {
+            color: #5f6982;
+            border: none;
+            box-shadow: inset 0 10px 50px rgba(25, 25, 25, 0.1);
+        } */
+
+        .radio-pillbox radiogroup .first {
+            border-radius: 75px 0 0 75px;
+            /* border-left: none; */
+        }
+
+        .radio-pillbox radiogroup .last {
+            border-radius: 0 75px 75px 0;
+        }
+
+        .radio-pillbox radiogroup div label {
+            position: absolute;
+            top: 50%;
+            /* top plus line-height centers text */
+            line-height: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+        }
+
+        .radio-pillbox input:focus {
+            outline: 0;
+        }
+
+        /* .radio-pillbox label:after {
+            content: "\2714";
+            display: inline-block;
+            -webkit-transform: scale(0);
+            -moz-transform: scale(0);
+            -o-transform: scale(0);
+            -ms-transform: scale(0);
+            transform: scale(0);
+            -webkit-transition: margin 250ms cubic-bezier(0.6, -0.28, 0.735, 0.045) 100ms,
+                -webkit-transform 250ms cubic-bezier(0.895, 0.03, 0.685, 0.22);
+            -moz-transition: margin 250ms cubic-bezier(0.6, -0.28, 0.735, 0.045) 100ms,
+                -moz-transform 250ms cubic-bezier(0.895, 0.03, 0.685, 0.22);
+            -o-transition: margin 250ms cubic-bezier(0.6, -0.28, 0.735, 0.045) 100ms,
+                -o-transform 250ms cubic-bezier(0.895, 0.03, 0.685, 0.22);
+            transition: margin 250ms cubic-bezier(0.6, -0.28, 0.735, 0.045) 100ms,
+                transform 250ms cubic-bezier(0.895, 0.03, 0.685, 0.22);
+        } */
+
+        /* .radio-pillbox input:checked+label:after {
+            margin-left: 12px;
+            -webkit-transform: scale(1.25);
+            -moz-transform: scale(1.25);
+            -o-transform: scale(1.25);
+            -ms-transform: scale(1.25);
+            transform: scale(1.25);
+            -webkit-transition: -webkit-transform 500ms cubic-bezier(0.175, 0.885, 0.32, 1.275) 250ms,
+                margin 500ms,
+                -webkit-transform 500ms cubic-bezier(0.175, 0.885, 0.32, 1.275) 250ms;
+            -moz-transition: -moz-transform 500ms cubic-bezier(0.175, 0.885, 0.32, 1.275) 250ms,
+                margin 500ms,
+                -moz-transform 500ms cubic-bezier(0.175, 0.885, 0.32, 1.275) 250ms;
+            -o-transition: -o-transform 500ms cubic-bezier(0.175, 0.885, 0.32, 1.275) 250ms,
+                margin 500ms,
+                -o-transform 500ms cubic-bezier(0.175, 0.885, 0.32, 1.275) 250ms;
+            transition: transform 500ms cubic-bezier(0.175, 0.885, 0.32, 1.275) 250ms,
+                margin 500ms, transform 500ms cubic-bezier(0.175, 0.885, 0.32, 1.275) 250ms;
+        } */
+
+        /* .radio-pillbox input[type="radio"]:checked+label {
+            color: white;
+        } */
+
+        .rb-tab-active .rb-spot {
+            color: white;
+        }
+
+        #submit-survey {
+            background-color: black;
+            color: white;
+            padding: 1em;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>FRIEND FINDER</h1>
+    <div id="questions"></div>
+
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script>
+        var survey = {
+            questions: [
+                "I am an extrovert.",
+                "I enjoy philosophical discussions.",
+                "I believe in karma.",
+                "I consider myself punctual.",
+                "Competition motivates me.",
+                "I am good at keeping up with people and have many friends.",
+                "I am pretty organized.",
+                "I find it difficult to discuss my feelings.",
+                "I like surprises.",
+                "Change makes me uncomfortable."
+            ],
+            values: [1, 2, 3, 4, 5],
+            choices: ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"],
+            surveyCreation: function () {
+                for (var i = 0; i < this.questions.length; i++) {
+                    $("#questions").append("<div class='question-wrapper' id='question-" + i + "'><h2 id=h2-" + i + "'>" + this.questions[i] + "</h2>");
+                    $("#question-" + i).append("<div class='radio-pillbox' id='pillbox-" + (i + 1) + "'>");
+                    $("#pillbox-" + (i + 1)).append("<radiogroup id='group-" + (i + 1) + "'>");
+                    if (i % 2 == 0) {
+                        $("#question-" + i).addClass("even");
+                        $("#h2-" + i).addClass("even");
+                    }
+                    else {
+                        $("#question-" + i).addClass("odd");
+                        $("#h2-" + i).addClass("odd");
+                    }
+                    for (var j = 0; j < this.choices.length; j++) {
+                        $("#group-" + (i + 1)).append("<div class='rb-tab'><input type='radio' name='options-" + i + "'id='choice-" + this.values[j] + "-" + i + "' value='" + (j + 1) + "'><label for='choice-" + this.values[j] + "'>" + this.choices[j] + "</label></input></div>");
+                    }
+                }
+                $("#choice-0 label").addClass("radio-label");
+                $("#choice-0").addClass("first");
+                $("#choice-5").addClass("last");
+
+                $("#questions").append('<button id="submit-survey"><h3>SUBMIT</h3></button>')
+
+                $(".rb-tab").click(function () {
+                    //Spot switcher:
+                    $(this).parent().find("label").css("color", "black");
+                    $(this).find("label").css("color", "white");
+                });
+            }
+        }
+
+        survey.surveyCreation();
+
+    </script>
+</body>
+
+</html>
