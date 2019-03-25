@@ -40,3 +40,8 @@ footer {
     left: 0;
     width: 100%;
 }
+
+ul li {
+    display: inline;
+    padding: 2em;
+}
