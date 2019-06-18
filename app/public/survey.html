@@ -2,346 +2,409 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://fonts.googleapis.com/css?family=Righteous|Roboto:700" rel="stylesheet">
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <style>
-        body {
-            background-image: radial-gradient(white 20%, #ff5a64, #faa04b, #d2dc69, #0ef49b);
-            text-align: center;
-            width: 75%;
-            margin: auto;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/css?family=Righteous|Roboto:700" rel="stylesheet">
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <style>
+    body {
+      background-image: radial-gradient(white 20%, #ff5a64, #faa04b, #d2dc69, #0ef49b);
+      text-align: center;
+      width: 75%;
+      margin: auto;
+    }
 
-        .input-active {
-            color: white;
-        }
+    a {
+      color: #0ef49b;
+      text-decoration: none;
+    }
 
-        label {
-            font-family: 'Roboto', sans-serif;
-        }
+    .input-active {
+      color: white;
+    }
 
-        h1,
-        h2,
-        h3 {
-            font-family: 'Righteous', cursive;
-        }
+    label {
+      font-family: 'Roboto', sans-serif;
+    }
 
-        h1 {
-            font-size: 500%;
-        }
+    h1,
+    h2,
+    h3 {
+      font-family: 'Righteous', cursive;
+    }
 
-        h2 {
-            font-size: 250%;
-            padding-top: 1.5em;
-            margin-top: 0;
-        }
+    h1 {
+      font-size: 500%;
+    }
 
-        h3 {
-            font-size: 200%;
-            padding: 1em;
-        }
+    h2 {
+      font-size: 250%;
+      padding-top: 1.5em;
+      margin-top: 0;
+    }
 
-        #questions {
-            background-color: white;
-            border-radius: 3em;
-            overflow: auto;
-            border: 1em double black;
-            margin-bottom: 2em;
-        }
+    h3 {
+      font-size: 200%;
+      padding: 1em;
+    }
 
-        .question-wrapper {
-            padding-bottom: 5em;
-        }
+    #questions {
+      background-color: white;
+      border-radius: 3em;
+      overflow: auto;
+      border: 1em double black;
+      margin-bottom: 2em;
+    }
 
-        .container {
-            margin-top: 40vh;
-        }
+    .question-wrapper,
+    #name-photo {
+      padding: 0 0.4em 5em 0.4em;
+    }
 
-        .even {
-            background-color: white;
-        }
+    .container {
+      margin-top: 40vh;
+    }
 
-        .odd {
-            background-color: black;
-            color: white;
-        }
+    .even {
+      background-color: white;
+    }
 
-        .radio-label {
-            width: 100%;
-            margin-bottom: 1em;
-            text-align: center;
-        }
+    .odd {
+      background-color: black;
+      color: white;
+    }
 
-        .radio-pillbox {
-            margin: auto;
-            height: 4em;
-            width: 75%;
-            font-size: 1em;
-            border: 0;
-            border-radius: 75px;
-            overflow: hidden;
-            background: -webkit-linear-gradient(100deg,
-                #0ef49b 0%,
-                #d2dc69 30%,
-                #faa04b 70%,
-                #ff5a64 100%);
-            background: -moz-linear-gradient(100deg,
-                #0ef49b 0%,
-                #d2dc69 30%,
-                #faa04b 70%,
-                #ff5a64 100%);
-            background: -o-linear-gradient(100deg,
-                #0ef49b 0%,
-                #d2dc69 30%,
-                #faa04b 70%,
-                #ff5a64 100%);
-            background: -ms-linear-gradient(100deg,
-                #0ef49b 0%,
-                #d2dc69 30%,
-                #faa04b 70%,
-                #ff5a64 100%);
-            background: linear-gradient(100deg,
-                #ff5a64 0%,
-                #faa04b 30%,
-                #d2dc69 70%,
-                #0ef49b 100%);
-            color: #000000;
-            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.16);
-        }
+    .radio-label {
+      width: 100%;
+      margin-bottom: 1em;
+      text-align: center;
+    }
 
-        .radio-pillbox radiogroup {
-            height: 100%;
-            width: 100%;
-            display: flex;
-        }
+    .radio-pillbox {
+      margin: auto;
+      height: 4em;
+      width: 75%;
+      font-size: 1em;
+      border: 0;
+      border-radius: 75px;
+      overflow: hidden;
+      background: -webkit-linear-gradient(100deg,
+        #0ef49b 0%,
+        #d2dc69 30%,
+        #faa04b 70%,
+        #ff5a64 100%);
+      background: -moz-linear-gradient(100deg,
+        #0ef49b 0%,
+        #d2dc69 30%,
+        #faa04b 70%,
+        #ff5a64 100%);
+      background: -o-linear-gradient(100deg,
+        #0ef49b 0%,
+        #d2dc69 30%,
+        #faa04b 70%,
+        #ff5a64 100%);
+      background: -ms-linear-gradient(100deg,
+        #0ef49b 0%,
+        #d2dc69 30%,
+        #faa04b 70%,
+        #ff5a64 100%);
+      background: linear-gradient(100deg,
+        #ff5a64 0%,
+        #faa04b 30%,
+        #d2dc69 70%,
+        #0ef49b 100%);
+      color: #000000;
+      box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.16);
+    }
 
-        .radio-pillbox radiogroup div {
-            width: 100%;
-            position: relative;
-        }
+    .radio-pillbox radiogroup {
+      height: 100%;
+      width: 100%;
+      display: flex;
+    }
 
-        .radio-pillbox radiogroup div input {
-            -webkit-appearance: inherit;
-            width: 100%;
-            height: 100%;
-            transition: background 300ms ease-out;
-            margin: 0;
-            outline: 0;
-            border-left: 1px solid rgba(0, 0, 0, 0.08);
-        }
+    .radio-pillbox radiogroup div {
+      width: 100%;
+      position: relative;
+    }
 
-        .radio-pillbox radiogroup .first {
-            border-radius: 75px 0 0 75px;
-        }
+    .radio-pillbox radiogroup div input {
+      -webkit-appearance: inherit;
+      width: 100%;
+      height: 100%;
+      transition: background 300ms ease-out;
+      margin: 0;
+      outline: 0;
+      border-left: 1px solid rgba(0, 0, 0, 0.08);
+    }
 
-        .radio-pillbox radiogroup .last {
-            border-radius: 0 75px 75px 0;
-        }
+    .radio-pillbox radiogroup .first {
+      border-radius: 75px 0 0 75px;
+    }
 
-        .radio-pillbox radiogroup div label {
-            position: absolute;
-            top: 50%;
-            line-height: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            text-align: center;
-        }
+    .radio-pillbox radiogroup .last {
+      border-radius: 0 75px 75px 0;
+    }
 
-        .radio-pillbox input:focus {
-            outline: 0;
-        }
+    .radio-pillbox radiogroup div label {
+      position: absolute;
+      top: 50%;
+      line-height: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+    }
 
-        input[type=text],
-        select {
-            width: 80%;
-            padding: 12px 20px;
-            margin: 8px 0;
-            display: inline-block;
-            border: .5em solid black;
-            border-radius: 4px;
-            box-sizing: border-box;
-            font-family: 'Roboto', sans-serif;
-            font-size: 1em;
+    .radio-pillbox input:focus {
+      outline: 0;
+    }
 
-        }
+    input[type=text],
+    select {
+      width: 80%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      display: inline-block;
+      border: .5em solid black;
+      border-radius: 4px;
+      box-sizing: border-box;
+      font-family: 'Roboto', sans-serif;
+      font-size: 1em;
 
-        .rb-tab-active .rb-spot {
-            color: white;
-        }
+    }
 
-        #submit-survey {
-            background-color: black;
-            color: white;
-            margin: 1em;
-            height: auto;
-            font-size: 3em;
-            padding: 0.3em;
-            font-family: 'Righteous', cursive;
-            border-radius: .25em
-        }
+    .rb-tab-active .rb-spot {
+      color: white;
+    }
 
-        /* The Modal (background) */
-        .modal {
-            display: none;
-            position: fixed;
-            /* Stay in place */
-            z-index: 1;
-            /* Sit on top */
-            padding-top: 4em;
-            /* Location of the box */
-            left: 0;
-            top: 0;
-            width: 100%;
-            /* Full width */
-            height: 100%;
-            /* Full height */
-            overflow: auto;
-            /* Enable scroll if needed */
-            background-color: rgb(0, 0, 0);
-            /* Fallback color */
-            background-color: rgba(0, 0, 0, 0.4);
-            /* Black w/ opacity */
-        }
+    #submit-survey {
+      background-color: black;
+      color: white;
+      margin: 0.3em;
+      height: auto;
+      font-size: 3em;
+      padding: 0.3em;
+      font-family: 'Righteous', cursive;
+      border-radius: .25em
+    }
 
-        /* Modal Content */
-        .modal-content {
-            background-color: #fefefe;
-            margin: auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-        }
+    /* The Modal (background) */
+    .modal {
+      display: none;
+      position: fixed;
+      /* Stay in place */
+      z-index: 1;
+      /* Sit on top */
+      padding-top: 4em;
+      /* Location of the box */
+      left: 0;
+      top: 0;
+      width: 100%;
+      /* Full width */
+      height: 100%;
+      /* Full height */
+      overflow: auto;
+      /* Enable scroll if needed */
+      background-color: rgb(0, 0, 0);
+      /* Fallback color */
+      background-color: rgba(0, 0, 0, 0.4);
+      /* Black w/ opacity */
+    }
 
-        /* The Close Button */
-        .close {
-            color: #aaaaaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
+    /* Modal Content */
+    .modal-content {
+      background-color: #fefefe;
+      margin: auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+    }
 
-        .close:hover,
-        .close:focus {
-            color: #000;
-            text-decoration: none;
-            cursor: pointer;
-        }
+    /* The Close Button */
+    .close {
+      color: #aaaaaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
 
-        #name-photo {
-            padding-bottom: 4em;
-        }
-    </style>
+    .close:hover,
+    .close:focus {
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    #name-photo {
+      padding-bottom: 4em;
+    }
+
+    @media(min-width:1px) and (max-width:400px) {
+      #submit-survey {
+        font-size: 2em;
+      }
+
+      h1 {
+        margin: auto;
+        font-size: 400%;
+      }
+
+      h2 {
+        font-size: 175%;
+      }
+    }
+
+    @media(max-width: 1300px) {
+      .s-dis:before {
+        content: '1'
+      }
+
+      .dis:before {
+        content: '2'
+      }
+
+      .neutral:before {
+        content: '3'
+      }
+
+      .agree:before {
+        content: '4'
+      }
+
+      .s-agree:before {
+        content: '5'
+      }
+
+      .s-dis>span,
+      .dis>span,
+      .neutral>span,
+      .agree>span,
+      .s-agree>span {
+        display: none;
+      }
+    }
+  </style>
 </head>
 
 <body>
-    <h1>FRIEND FINDER</h1>
-    <div id="questions"></div>
+  <h1>FRIEND FINDER</h1>
+  <div id="questions"></div>
 
-    <div class="modal" id="instructions-modal">
-        <div class="modal-content" id="instructions">
-            <span class="close">&times;</span>
-            <h3 id="userMatch"></h3>
-            <img id="userMatchImage" class="materialboxed" width="650" src="">
-        </div>
-        <div class="modal-footer">
-            <a href="/survey" class="modal-action modal-close waves-effect waves-green btn-flat">RETAKE SURVEY</a>
-        </div>
+  <div class="modal" id="instructions-modal">
+    <div class="modal-content" id="instructions">
+      <span class="close">&times;</span>
+      <h3 id="userMatch"></h3>
+      <img id="userMatchImage" class="materialboxed" width="650" src="">
     </div>
+    <div class="modal-footer">
+      <a href="/survey" class="modal-action modal-close waves-effect waves-green btn-flat">RETAKE SURVEY</a>
+    </div>
+  </div>
 
-    <script>
-        var survey = {
-            questions: [
-                "I am an extrovert.",
-                "I enjoy philosophical discussions.",
-                "I believe in karma.",
-                "I consider myself punctual.",
-                "Competition motivates me.",
-                "I am good at keeping up with people and have many friends.",
-                "I am pretty organized.",
-                "I find it difficult to discuss my feelings.",
-                "I like surprises.",
-                "Change makes me uncomfortable."
-            ],
-            values: [1, 2, 3, 4, 5],
-            choices: ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"],
-            surveyCreation: function () {
-                for (var i = 0; i < this.questions.length; i++) {
-                    $("#questions").append("<div class='question-wrapper' id='question-" + i + "'><h2 id=h2-" + i + "'>" + this.questions[i] + "</h2>");
-                    $("#question-" + i).append("<div class='radio-pillbox' id='pillbox-" + (i + 1) + "'>");
-                    $("#pillbox-" + (i + 1)).append("<radiogroup id='group-" + (i + 1) + "'>");
-                    if (i % 2 == 0) {
-                        $("#question-" + i).addClass("even");
-                        $("#h2-" + i).addClass("even");
-                    }
-                    else {
-                        $("#question-" + i).addClass("odd");
-                        $("#h2-" + i).addClass("odd");
-                    }
-                    for (var j = 0; j < this.choices.length; j++) {
-                        $("#group-" + (i + 1)).append("<div class='rb-tab'><input type='radio' name='options-" + i + "'id='choice-" + this.values[j] + "-" + i + "' value='" + (j + 1) + "'><label for='choice-" + this.values[j] + "'>" + this.choices[j] + "</label></input></div>");
-                    }
-                }
-                $("#choice-0 label").addClass("radio-label");
-                $("#choice-0").addClass("first");
-                $("#choice-5").addClass("last");
+  <script>
+    var survey = {
+      questions: [
+        "I am an extrovert.",
+        "I enjoy philosophical discussions.",
+        "I believe in karma.",
+        "I consider myself punctual.",
+        "Competition motivates me.",
+        "I am good at keeping up with people and have many friends.",
+        "I am pretty organized.",
+        "I find it difficult to discuss my feelings.",
+        "I like surprises.",
+        "Change makes me uncomfortable."
+      ],
+      values: [1, 2, 3, 4, 5],
+      choices: [
+        "<div class='s-dis'><span>Strongly Disagree</span></div>",
+        "<div class='dis'><span>Disagree</span>",
+        "<div class='neutral'><span>Neutral</span>",
+        "<div class='agree'><span>Agree</span>",
+        "<div class='s-agree'><span>Strogly Agree</span>"
+      ],
 
-                $("#questions").append('<button id="submit-survey">SUBMIT</button>')
-
-                $("#questions").prepend('<div class="odd" id="name-photo"><h2>Name (Required)</h2><input type="text" class="validate text-input" placeholder="Your Name Here" id="userName"><h2>Photo Link (get one <a href="http://tinypic.com/">here</a> -- choose "Direct Link for Layouts")</a></h2><input type="text" class="validate text-input" placeholder="Photo Link Here" id="userPhoto"></div>')
-
-                $(".rb-tab").click(function () {
-                    //Spot switcher:
-                    $(this).parent().find("label").css("color", "black");
-                    $(this).find("label").css("color", "white");
-                    $(this).find("input").addClass("rb-tab-active");
-                });
-            }
+      // <span class='s-dis'>Strongly Disagree</span>",
+      //   "<span class='dis'>Disagree</span>",
+      //   "<span class='neutral'>Neutral</span>",
+      //   "<span class='agree'>Agree</span>",
+      //   "<span class='s-agree'>Strogly Agree</span>"
+      surveyCreation: function () {
+        for (var i = 0; i < this.questions.length; i++) {
+          $("#questions").append("<div class='question-wrapper' id='question-" + i + "'><h2 id=h2-" + i + "'>" + this.questions[i] + "</h2>");
+          $("#question-" + i).append("<div class='radio-pillbox' id='pillbox-" + (i + 1) + "'>");
+          $("#pillbox-" + (i + 1)).append("<radiogroup id='group-" + (i + 1) + "'>");
+          if (i % 2 == 0) {
+            $("#question-" + i).addClass("even");
+            $("#h2-" + i).addClass("even");
+          }
+          else {
+            $("#question-" + i).addClass("odd");
+            $("#h2-" + i).addClass("odd");
+          }
+          for (var j = 0; j < this.choices.length; j++) {
+            $("#group-" + (i + 1)).append("<div class='rb-tab'><input type='radio' name='options-" + i + "'id='choice-" + this.values[j] + "-" + i + "' value='" + (j + 1) + "'><label for='choice-" + this.values[j] + "'>" + this.choices[j] + "</label></input></div>");
+          }
         }
+        $("#choice-0 label").addClass("radio-label");
+        $("#choice-0").addClass("first");
+        $("#choice-5").addClass("last");
 
-        $(document).ready(function () {
-            survey.surveyCreation();
-            // Activate submit button
-            $('#submit-survey').on('click', function (event) {
-                // Gather user inputs
-                var userInput = {
-                    name: $('#userName').val().trim(),
-                    photo: $('#userPhoto').val().trim(),
-                    scores: [
-                        $("#question-1").find(".rb-tab-active").val(),
-                        $("#question-2").find(".rb-tab-active").val(),
-                        $("#question-3").find(".rb-tab-active").val(),
-                        $("#question-4").find(".rb-tab-active").val(),
-                        $("#question-5").find(".rb-tab-active").val(),
-                        $("#question-6").find(".rb-tab-active").val(),
-                        $("#question-7").find(".rb-tab-active").val(),
-                        $("#question-8").find(".rb-tab-active").val(),
-                        $("#question-9").find(".rb-tab-active").val(),
-                        $("#question-10").find(".rb-tab-active").val()
-                    ]
-                };
+        $("#questions").append('<button id="submit-survey">SUBMIT</button>')
 
-                console.log('userInput = ' + JSON.stringify(userInput));
-                // Add user inputs to friends list
-                $.post('/api/friends', userInput)
-                    .done(function (data) {
-                        // console.log('response = ' + JSON.stringify(data));
-                        // Set the name and image values of friend match
-                        $('#userMatch').html(data.matchName);
-                        $("#userMatchImage").attr("src", data.matchImage);
-                        // Pop open the modal dialog
-                        $('.modal').show();
-                    });
-            });
+        $("#questions").prepend('<div class="odd" id="name-photo"><h2>Name (Required)</h2><input type="text" class="validate text-input" placeholder="Your Name" id="userName"><h2>Photo Link (get one <a href="http://tinypic.com/">here</a> -- choose "Direct Link for Layouts")</a></h2><input type="text" class="validate text-input" placeholder="Photo Link" id="userPhoto"></div>')
+
+        $(".rb-tab").click(function () {
+          //Spot switcher:
+          $(this).parent().find("label").css("color", "black");
+          $(this).find("label").css("color", "white");
+          $(this).find("input").addClass("rb-tab-active");
         });
+      }
+    }
 
-        $(".close").click(function () {
-            $(".modal").hide();
-        });
-    </script>
+    $(document).ready(function () {
+      survey.surveyCreation();
+      // Activate submit button
+      $('#submit-survey').on('click', function (event) {
+        // Gather user inputs
+        var userInput = {
+          name: $('#userName').val().trim(),
+          photo: $('#userPhoto').val().trim(),
+          scores: [
+            $("#question-1").find(".rb-tab-active").val(),
+            $("#question-2").find(".rb-tab-active").val(),
+            $("#question-3").find(".rb-tab-active").val(),
+            $("#question-4").find(".rb-tab-active").val(),
+            $("#question-5").find(".rb-tab-active").val(),
+            $("#question-6").find(".rb-tab-active").val(),
+            $("#question-7").find(".rb-tab-active").val(),
+            $("#question-8").find(".rb-tab-active").val(),
+            $("#question-9").find(".rb-tab-active").val(),
+            $("#question-10").find(".rb-tab-active").val()
+          ]
+        };
+
+        console.log('userInput = ' + JSON.stringify(userInput));
+        // Add user inputs to friends list
+        $.post('/api/friends', userInput)
+          .done(function (data) {
+            // console.log('response = ' + JSON.stringify(data));
+            // Set the name and image values of friend match
+            $('#userMatch').html(data.matchName);
+            $("#userMatchImage").attr("src", data.matchImage);
+            // Pop open the modal dialog
+            $('.modal').show();
+          });
+      });
+    });
+
+    $(".close").click(function () {
+      $(".modal").hide();
+    });
+  </script>
 </body>
 
 </html>
